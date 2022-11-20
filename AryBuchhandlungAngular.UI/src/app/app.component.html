@@ -3,12 +3,18 @@
     <th>Name</th>
     <th>Niveau</th>
     <th>Preis</th>
+    <th></th>
   </thead>
   <tbody>
     <tr *ngFor="let buch of buecher">
       <td>{{buch.name}}</td>
       <td>{{buch.niveau}}</td>
       <td>{{buch.preis}}</td>
+      <td><button (click)="aktualisiereBuch(buch)">Aktualisieren</button></td>
     </tr>
   </tbody>
 </table>
+<button type="button" (click)="initNeuesBuch()" class="btn btn-outline-success">Erstellen ein neues Buch</button>
+<app-bearbeiten-buch 
+[buch]="buchZumAktualisieren"(buecherAktualisiert)="aktualisiereBuchListe($event)">
+</app-bearbeiten-buch>

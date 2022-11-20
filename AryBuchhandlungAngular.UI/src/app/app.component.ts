@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AryBuchService } from './dienste/ary-buch.service';
+import { AryBuchDienst } from './dienste/ary-buch.service';
 import { AryBuch } from './modelle/ary-buch';
 
 @Component({
@@ -10,9 +10,23 @@ import { AryBuch } from './modelle/ary-buch';
 export class AppComponent {
   title = 'AryBuchhandlungAngular.UI';
   buecher:AryBuch[]=[];
+  buchZumAktualisieren?:AryBuch;
 
-  constructor(private aryBuchDienst:AryBuchService){}
+  constructor(private aryBuchDienst:AryBuchDienst){}
+
   ngOnInit():void{
     this.aryBuchDienst.geheZurAryBücher().subscribe((resultat:AryBuch[])=>(this.buecher=resultat));
+  }
+
+  aktualisiereBuchListe(buecher:AryBuch[]){
+    this.buecher=buecher;
+  }
+
+  initNeuesBuch(){
+    this.buchZumAktualisieren=new AryBuch();
+  }
+  
+  aktualisiereBuch(buch: AryBuch){
+    this.buchZumAktualisieren=buch;
   }
 }

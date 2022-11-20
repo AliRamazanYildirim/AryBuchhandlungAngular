@@ -1,0 +1,20 @@
+<div *ngIf="buch">
+<h2>{{buch.name}}</h2>
+<div>
+    Name:
+    <input [(ngModel)]="buch.name" placeholder="Name"/>
+</div>
+<div>
+    Niveau:
+    <input [(ngModel)]="buch.niveau" placeholder="Niveau"/>
+</div>
+<div>
+    Preis:
+    <input [(ngModel)]="buch.preis" placeholder="Preis"/>
+</div>
+<button (click)="erstelleBuch(buch)" *ngIf="!buch.id">Speichern</button>
+<button (click)="entferneBuch(buch)" *ngIf="buch.id">Entfernen</button>
+<button (click)="aktualisiereBuch(buch)" *ngIf="buch.id">Aktualisieren</button>
+
+
+</div>
