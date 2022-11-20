@@ -2,15 +2,23 @@
 <h2>{{buch.name}}</h2>
 <div>
     Name:
-    <input [(ngModel)]="buch.name" placeholder="Name"/>
+    <mat-form-field class="example-form-field">
+        <input [(ngModel)]="buch.name" placeholder="Name"/>
+    </mat-form-field>
+    
 </div>
 <div>
     Niveau:
+    <mat-form-field class="example-form-field">
     <input [(ngModel)]="buch.niveau" placeholder="Niveau"/>
+    </mat-form-field>
 </div>
 <div>
     Preis:
+    <mat-form-field class="example-form-field">
     <input [(ngModel)]="buch.preis" placeholder="Preis"/>
+    </mat-form-field>
+
 </div>
 <button mat-stroked-button color="primary" (click)="erstelleBuch(buch)" *ngIf="!buch.id">Speichern</button>
 <button mat-stroked-button color="warn" (click)="entferneBuch(buch)" *ngIf="buch.id">Entfernen</button>
