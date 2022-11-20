@@ -13,7 +13,6 @@ export class AppComponent {
 
   constructor(private aryBuchDienst:AryBuchService){}
   ngOnInit():void{
-    this.buecher=this.aryBuchDienst.geheZurAryBücher();
-    console.log(this.buecher);
+    this.aryBuchDienst.geheZurAryBücher().subscribe((resultat:AryBuch[])=>(this.buecher=resultat));
   }
 }
