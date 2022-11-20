@@ -43,5 +43,18 @@ namespace AryBuchhandlungAPI.Controllers
 
             return Ok(await _kontext.AryBücher.ToListAsync());
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<AryBuch>>>LöscheBuch(int id)
+        {
+            var dbBuch = await _kontext.AryBücher.FindAsync(id);
+            if (dbBuch == null)
+                return BadRequest("Kein Buch wurde gefunden.");
+
+            _kontext.AryBücher.Remove(dbBuch);
+            await _kontext.SaveChangesAsync();
+
+            return Ok(await _kontext.AryBücher.ToListAsync());
+
+        }
     }
 }
