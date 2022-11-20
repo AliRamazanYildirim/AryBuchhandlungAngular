@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { AryBuch } from '../modelle/ary-buch';
 
 @Injectable({
