@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AryBuchhandlungAPI.Daten;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AryBuchhandlungAPI.Controllers
 {
@@ -7,22 +9,16 @@ namespace AryBuchhandlungAPI.Controllers
     [ApiController]
     public class AryBuchController : ControllerBase
     {
-        public AryBuchController()
-        {
+        private readonly DatenKontext _kontext;
 
+        public AryBuchController(DatenKontext kontext)
+        {
+            _kontext = kontext;
         }
         [HttpGet]
         public async Task<ActionResult<List<AryBuch>>> GeheZurBücher()
         {
-            return new List<AryBuch>
-            {
-                new AryBuch
-                {
-                    Name="Aspekte Neu B1 ",
-                    Niveau="B1",
-                    Preis=29.99m
-                }
-            };
+            return Ok(await _kontext.AryBücher.ToListAsync());
         }
     }
 }
