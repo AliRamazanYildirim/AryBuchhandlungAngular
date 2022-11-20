@@ -28,5 +28,20 @@ namespace AryBuchhandlungAPI.Controllers
 
             return Ok(await _kontext.AryBücher.ToListAsync());
         }
+        [HttpPut]
+        public async Task<ActionResult<List<AryBuch>>>AktualisiereBuch(AryBuch buch)
+        {
+            var dbBuch = await _kontext.AryBücher.FindAsync(buch.ID);
+            if (dbBuch == null)
+                return BadRequest("Kein Buch wurde gefunden.");
+
+            dbBuch.Name = buch.Name;
+            dbBuch.Niveau = buch.Niveau;
+            dbBuch.Preis = buch.Preis;
+
+            await _kontext.SaveChangesAsync();
+
+            return Ok(await _kontext.AryBücher.ToListAsync());
+        }
     }
 }
