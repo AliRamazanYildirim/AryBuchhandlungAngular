@@ -12,9 +12,9 @@
     Preis:
     <input [(ngModel)]="buch.preis" placeholder="Preis"/>
 </div>
-<button (click)="erstelleBuch(buch)" *ngIf="!buch.id">Speichern</button>
-<button (click)="entferneBuch(buch)" *ngIf="buch.id">Entfernen</button>
-<button (click)="aktualisiereBuch(buch)" *ngIf="buch.id">Aktualisieren</button>
+<button mat-stroked-button color="primary" (click)="erstelleBuch(buch)" *ngIf="!buch.id">Speichern</button>
+<button mat-stroked-button color="warn" (click)="entferneBuch(buch)" *ngIf="buch.id">Entfernen</button>
+<button mat-stroked-button color="accent" (click)="aktualisiereBuch(buch)" *ngIf="buch.id">Aktualisieren</button>
 
 
 </div>
