@@ -20,5 +20,13 @@ namespace AryBuchhandlungAPI.Controllers
         {
             return Ok(await _kontext.AryBücher.ToListAsync());
         }
+        [HttpPost]
+        public async Task<ActionResult<List<AryBuch>>>ErstelleBuch(AryBuch buch)
+        {
+            _kontext.AryBücher.Add(buch);
+            await _kontext.SaveChangesAsync();
+
+            return Ok(await _kontext.AryBücher.ToListAsync());
+        }
     }
 }
